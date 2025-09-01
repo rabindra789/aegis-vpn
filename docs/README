@@ -1,0 +1,73 @@
+# WireGuard VPN Server
+
+A personal VPN server running WireGuard, designed for secure remote access.
+
+---
+
+## Features
+
+- WireGuard VPN (fast, modern, secure)  
+- Automated server setup (`setup.sh`)  
+- Easy client addition (`add-client.sh`)  
+- Hardened server configuration  
+- Documentation & diagrams included  
+
+---
+
+## Repository Structure
+
+```
+
+personal-vpn-server/
+├── setup.sh              # Server setup script
+├── add-client.sh         # Add client script
+├── server/               # Server configs & hardening notes
+├── clients/              # Client configs & onboarding guide
+├── diagrams/             # Architecture & networking visuals
+├── docs/                 # Documentation
+└── LICENSE               # License file
+
+````
+
+---
+
+## Quick Start
+
+### 1. Setup Server
+
+```bash
+sudo ./setup.sh
+```
+
+### 2. Add Clients
+
+```bash
+sudo ./add-client.sh <client-name>
+```
+
+* Scan QR code for mobile setup or import `.conf` on desktop.
+
+### 3. Verify Connection
+
+```bash
+sudo wg show
+ping 10.10.0.1
+```
+
+---
+
+## Documentation
+
+* `docs/why-wireguard.md` – Why WireGuard over OpenVPN/IPSec
+
+* `docs/security-model.md` – Threat model & mitigations
+
+![VPN flow diagram](diagrams/architecture.png)
+
+![NAT & routing diagram](diagrams/networking.png)
+
+---
+
+## License
+
+MIT License – see [LICENSE](LICENSE) file.
