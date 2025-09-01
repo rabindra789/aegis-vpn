@@ -45,7 +45,7 @@ sudo ./setup.sh
 sudo ./add-client.sh <client-name>
 ```
 
-* Scan QR code for mobile setup or import `.conf` on desktop.
+- Scan QR code for mobile setup or import `.conf` on desktop.
 
 ### 3. Verify Connection
 
@@ -58,9 +58,9 @@ ping 10.10.0.1
 
 ## Documentation
 
-* `docs/why-wireguard.md` – Why WireGuard over OpenVPN/IPSec
+- `docs/why-wireguard.md` – Why WireGuard over OpenVPN/IPSec
 
-* `docs/security-model.md` – Threat model & mitigations
+- `docs/security-model.md` – Threat model & mitigations
 
 ![VPN flow diagram](diagrams/architecture.png)
 
