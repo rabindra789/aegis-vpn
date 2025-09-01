@@ -1,4 +1,4 @@
-# WireGuard VPN Server
+# Personal VPN Server
 
 A personal VPN server running WireGuard, designed for secure remote access.
 
