@@ -16,8 +16,6 @@ A personal VPN server running WireGuard, designed for secure remote access.
 
 ## Repository Structure
 
-```
-
 personal-vpn-server/
 ├── setup.sh              # Server setup script
 ├── add-client.sh         # Add client script
@@ -27,7 +25,6 @@ personal-vpn-server/
 ├── docs/                 # Documentation
 └── LICENSE               # License file
 
-````
 
 ---
 
