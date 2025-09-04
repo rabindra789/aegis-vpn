@@ -1,6 +1,6 @@
 # Aegis-vpn
 
-A VPN server running WireGuard, designed for secure remote access.
+A Personal VPN server running WireGuard, designed for secure remote access.
 
 ---
 
