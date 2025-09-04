@@ -1,6 +1,6 @@
-# Personal VPN Server
+# Aegis-vpn
 
-A personal VPN server running WireGuard, designed for secure remote access.
+A VPN server running WireGuard, designed for secure remote access.
 
 ---
 
@@ -59,9 +59,9 @@ ping 10.10.0.1
 
 - `docs/security-model.md` – Threat model & mitigations
 
- ![VPN flow diagram](https://github.com/rabindra789/personal-vpn-server/blob/main/diagrams/architecture.png)
+ ![VPN flow diagram](https://github.com/rabindra789/aegis-vpn/blob/main/diagrams/architecture.png)
 
- ![NAT & routing diagram](https://github.com/rabindra789/personal-vpn-server/blob/main/diagrams/networking.png)
+ ![NAT & routing diagram](https://github.com/rabindra789/aegis-vpn/blob/main/diagrams/networking.png)
 
 ---
 
