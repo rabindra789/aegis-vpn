@@ -1,6 +1,6 @@
 #!/bin/bash
 #===========================================================
-# WireGuard VPN Server Setup Script (Germany Server)
+# Aegis vpn Server Setup Script (Germany Server)
 # Author: Rabindra
 # Description: Fully automated WireGuard setup, firewall
 #              hardening, and system tuning for secure VPN.
