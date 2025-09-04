@@ -1,6 +1,6 @@
 #!/bin/bash
 #===========================================================
-# WireGuard VPN Client Config Generator
+# Aegis vpn Config Generator
 # Author: Rabindra
 # Description: Generates client keys, configuration, and QR
 #              for easy mobile/desktop setup.
