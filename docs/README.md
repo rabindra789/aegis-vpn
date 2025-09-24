@@ -13,7 +13,7 @@ The current version already hides most of those pain-points for you, but you’l
 
 - WireGuard VPN (fast, modern, secure)  
 - Automated server setup (`setup.sh`)  
-- Easy client addition (`add-client.sh`)  
+- Easy client addition (`add_client.sh`)
 - Hardened server configuration  
 - Documentation & diagrams included  
 
@@ -21,9 +21,9 @@ The current version already hides most of those pain-points for you, but you’l
 
 ## Repository Structure
 ```
-personal-vpn-server/
+.
 ├── setup.sh              # Server setup script
-├── add-client.sh         # Add client script
+├── add_client.sh         # Add client script
 ├── server/               # Server configs & hardening notes
 ├── clients/              # Client configs & onboarding guide
 ├── diagrams/             # Architecture & networking visuals
