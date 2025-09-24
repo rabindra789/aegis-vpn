@@ -44,7 +44,7 @@ sudo ./setup.sh
 ### 2. Add Clients
 
 ```bash
-sudo ./add-client.sh <client-name>
+sudo ./add_client.sh <client-name>
 ```
 - This generates a .conf file for the client.
 - For mobile: scan the QR code displayed in your terminal with the WireGuard app.
