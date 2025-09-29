@@ -32,7 +32,9 @@ mkdir -p $CLIENTS_DIR
 echo "[*] Generating keys for $CLIENT_NAME..."
 CLIENT_PRIVATE_KEY=$(wg genkey)
 CLIENT_PUBLIC_KEY=$(echo $CLIENT_PRIVATE_KEY | wg pubkey)
-CLIENT_IP="10.10.0.$(( $(ls $CLIENTS_DIR | grep -c '.conf$') + 2 ))"
+
+CLIENT_IPv4="10.10.0.$(( $(ls $CLIENTS_DIR | grep -c '.conf$') + 2 ))"
+CLIENT_IPv6="fd86:ea04:1115::$(( $(ls $CLIENTS_DIR | grep -c '.conf$') + 2 ))"
 
 
 # Create client configuration
@@ -41,7 +43,7 @@ echo "[*] Creating client configuration at $CLIENT_CONF..."
 cat > $CLIENT_CONF <<EOF
 [Interface]
 PrivateKey = $CLIENT_PRIVATE_KEY
-Address = $CLIENT_IP/32
+Address = $CLIENT_IPv4/32, $CLIENT_IPv6/128
 DNS = 1.1.1.1
 
 [Peer]
@@ -64,12 +66,16 @@ PublicKey = $CLIENT_PUBLIC_KEY
 AllowedIPs = $CLIENT_IP/32
 EOF
 
-wg addpeer $WG_INTERFACE public-key "$CLIENT_PUBLIC_KEY" allowed-ips "$CLIENT_IP/32"
+wg set $WG_INTERFACE peer "$CLIENT_PUBLIC_KEY" allowed-ips "$CLIENT_IPv4/32,$CLIENT_IPv6/128"
 
 
 # Generate QR code
-echo "[*] Generating QR code for mobile setup..."
-qrencode -t ansiutf8 < $CLIENT_CONF
+if command -v qrencode &>/dev/null; then
+    echo "[*] Generating QR code for mobile..."
+    qrencode -t ansiutf8 < $CLIENT_CONF
+else
+    echo "[!] 'qrencode' not found. Install it to generate QR codes."
+fi
 
 echo "[*] Client $CLIENT_NAME added successfully!"
 echo "Config file: $CLIENT_CONF"
