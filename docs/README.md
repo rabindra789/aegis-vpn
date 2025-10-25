@@ -1,6 +1,7 @@
 # 🛡️ Aegis-VPN v1.2
 
 ![Aegis-VPN](https://github.com/rabindra789/aegis-vpn/blob/main/images/image.png)
+
 Aegis‑VPN is built on top of the open-source WireGuard protocol, delivering a lightweight, high-performance, and secure VPN solution for remote access, internal testing, and private networks. 
 Fully automated and well documented, Aegis‑VPN gives operators and users full control over server provisioning, client onboarding (including QR-based mobile setup), and security best practices such as IPv6 dual‑stack support and unattended installations.
 
@@ -130,3 +131,4 @@ Refer to [`docs/contributing.md`](docs/contributing.md) for guidelines.
 ## 📄 License
 
 MIT License – see [LICENSE](LICENSE) file.
+
