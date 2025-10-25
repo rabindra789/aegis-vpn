@@ -1,69 +1,69 @@
 # 🛡️ Aegis-VPN
+
 ![Aegis-VPN](https://github.com/rabindra789/aegis-vpn/blob/main/images/image.png)
 
-- Aegis-VPN is my **personal VPN server project** built on top of [WireGuard](https://www.wireguard.com/).  
-- It’s designed to give **secure remote access** without the “mystery box” feeling of commercial VPNs.  
-- Everything is open, automated and documented so you can run it yourself.
+**Aegis-VPN** is an **open-source WireGuard VPN** project for secure remote access and safe testing environments. Fully automated, documented, and designed to eliminate the “mystery box” feeling of commercial VPNs.
 
-While building this I ran into all sorts of small obstacles, missing dependencies on some VPSs, odd routing rules, QR code issues on mobile, and figuring out the safest defaults for WireGuard.  
-The current version already hides most of those pain-points for you, but you’ll still learn what’s happening under the hood.
+Everything is transparent: server setup, client onboarding, hardening, and networking – you can run it yourself and understand what’s happening under the hood.
 
-
+---
 
 ## Features
 
-- WireGuard VPN (fast, modern, secure)  
-- Automated server setup (`setup.sh`)  
-- Easy client addition (`add_client.sh`)  
-- Hardened server configuration  
-- Documentation & diagrams included  
+* Fast, modern, and secure **WireGuard VPN**
+* Automated server setup (`setup.sh`)
+* Easy client management (`manage_client.sh`) – add, remove, list
+* Hardened server configuration and firewall rules
+* Fully documented with **architecture & network diagrams**
+* Mobile-ready with QR codes for client setup
 
-
+---
 
 ## Repository Structure
+
 ```
 personal-vpn-server/
-├── setup.sh              # Server setup script
-├── add_client.sh         # Add client script
-├── manage_client.sh      # manage client script (add, remove, list)
-├── cleanup.sh            # Cleanup script for whole setup
+├── setup.sh              # Automated server setup
+├── manage_client.sh      # Add, remove, list clients
+├── cleanup.sh            # Full cleanup script
 ├── server/               # Server configs & hardening notes
 ├── clients/              # Client configs & onboarding guide
-├── diagrams/             # Architecture & networking visuals
-├── docs/                 # Documentation
-└── LICENSE               # License file
-
+├── diagrams/             # Architecture & networking diagrams
+├── docs/                 # Documentation and guides
+└── LICENSE               # MIT License
 ```
 
+---
 
 ## Quick Start
 
 ### 1. Setup Server
+
 ```bash
 sudo ./setup.sh
 ```
-- This installs WireGuard, sets up the server configuration and firewall rules automatically.
 
-### 2. Add Clients
+* Installs WireGuard, server configuration, and firewall rules automatically.
+* Optional unattended mode:
+
+```bash
+sudo ./setup.sh --auto
+```
+
+---
+
+### 2. Manage Clients
 
 ```bash
 sudo ./manage_client.sh add <client-name>
-```
-- This generates a .conf file for the client.
-- For mobile: scan the QR code displayed in your terminal with the WireGuard app.
-- For desktop: import the .conf file.
-
-```bash
 sudo ./manage_client.sh remove <client-name>
-```
-- This removes the client's configuration and revokes their access.
-
-```bash
 sudo ./manage_client.sh list
 ```
-- This lists all currently connected clients.
 
-- Scan QR code for mobile setup or import `.conf` on desktop.
+* Mobile setup: scan the QR code displayed in the terminal using the WireGuard app.
+* Desktop setup: import the generated `.conf` file.
+
+---
 
 ### 3. Verify Connection
 
@@ -72,51 +72,41 @@ sudo wg show
 ping 10.10.0.1
 ```
 
-
+---
 
 ## Documentation
 
-- `docs/why-wireguard.md` – Why WireGuard over OpenVPN/IPSec
+* [`docs/why-wireguard.md`](docs/why-wireguard.md) – Why WireGuard over OpenVPN/IPSec
+* [`docs/security-model.md`](docs/security-model.md) – Threat model & mitigation strategies
 
-- `docs/security-model.md` – Threat model & mitigations
+![VPN flow diagram](https://github.com/rabindra789/aegis-vpn/blob/main/diagrams/architecture.png)
+![NAT & routing diagram](https://github.com/rabindra789/aegis-vpn/blob/main/diagrams/networking.png)
 
- ![VPN flow diagram](https://github.com/rabindra789/aegis-vpn/blob/main/diagrams/architecture.png)
-
- ![NAT & routing diagram](https://github.com/rabindra789/aegis-vpn/blob/main/diagrams/networking.png)
-
-
+---
 
 ## Roadmap (v1.1)
 
-The following features are planned or partially implemented in **Aegis-VPN v1.1**:
+* ✅ Unified client management (`manage_client.sh`)
+* ✅ Auto QR codes for mobile clients
+* ✅ Unattended installation (`--auto`)
+* ✅ IPv6 dual-stack support
+* ✅ Terminal banner (ASCII art)
+* ✅ Improved error handling & dependency checks
 
-* **Interactive Client Management** ✅
-  One unified script (`manage_client.sh`) to **add, remove, or list clients**, replacing separate scripts.
+**Future improvements:**
 
-* **Auto QR Codes for Mobile Apps** ✅
-  After generating a client configuration, a **QR code is displayed automatically** for easy mobile setup.
+* Client logging & monitoring
+* Automated key rotation
+* Optional DNS-over-HTTPS / DNS-over-TLS
+* Advanced firewall rules with rate-limiting and geo-blocking
 
-* **Unattended Install Mode** ✅
-  `setup.sh --auto` flag runs a **fully non-interactive installation**, ideal for cloud or VPS deployments.
+---
 
-* **IPv6 Support (Dual Stack)** ✅
-  Server and client configurations now support **IPv4 + IPv6 addresses** for dual-stack connectivity.
+## Contribution
 
-* **Terminal Banner (ASCII Art)** ✅
-  `setup.sh` now displays a **Metasploit-style AEGIS VPN banner** on startup for a professional look.
+Contributions, bug reports, and feature requests are welcome! Please read the [CONTRIBUTING.md](docs/contributing.md) guide if you want to contribute.
 
-* **Improved Error Handling & Dependencies** ✅
-  Automatic checks and fixes for **missing packages, routing issues, and QR code generation**, minimizing setup pain points.
-
-* **Future Improvements**
-
-  * Logging & monitoring of connected clients
-  * Automated key rotation & expiration policies
-  * Optional DNS-over-HTTPS or DNS-over-TLS for privacy
-  * Advanced firewall hardening with rate-limiting and geo-blocking
-
-Contributions, testing feedback, and suggestions are always welcome!
-
+---
 
 ## License
 
