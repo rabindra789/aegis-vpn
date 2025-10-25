@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #===========================================================
 # Aegis vpn Config Generator
 # Author: Rabindra
@@ -9,23 +9,33 @@
 
 set -e
 
+BASE_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+SCRIPTS_DIR="$BASE_DIR/scripts"
+CLIENTS_DIR="$BASE_DIR/clients"
+WG_DIR="/etc/wireguard"
+WG_INTERFACE="wg0"
+
+# Source logging hooks
+source "$SCRIPTS_DIR/log_hooks.sh"
+
+# Ensure clients directory exists
+mkdir -p "$CLIENTS_DIR"
 
 # Check input
 if [ -z "$1" ]; then
     echo "Usage: sudo ./add-client.sh <client-name>"
+    log_error "Failed to add client: missing client name"
     exit 1
 fi
 
 CLIENT_NAME="$1"
-WG_INTERFACE="wg0"
-WG_DIR="/etc/wireguard"
-CLIENTS_DIR="$PWD/clients"
 SERVER_PUBLIC_KEY=$(cat $WG_DIR/publickey)
 SERVER_IP=$(curl -s https://ipinfo.io/ip)
 VPN_SUBNET="10.10.0.0/24"
 
+
 # Ensure clients directory exists
-mkdir -p $CLIENTS_DIR
+mkdir -p "$CLIENTS_DIR"
 
 
 # Generate client keys
@@ -68,6 +78,9 @@ EOF
 
 wg set $WG_INTERFACE peer "$CLIENT_PUBLIC_KEY" allowed-ips "$CLIENT_IPv4/32,$CLIENT_IPv6/128"
 
+# Log the client addition
+log_connection "$CLIENT_NAME" "$CLIENT_IPv4" "connected"
+log_audit "Client added: $CLIENT_NAME ($CLIENT_IPv4,$CLIENT_IPv6)"
 
 # Generate QR code
 if command -v qrencode &>/dev/null; then

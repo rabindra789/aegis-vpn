@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #===========================================================
 # Aegis-VPN Setup Script (Germany Server) v1.1
 # Author: Rabindra

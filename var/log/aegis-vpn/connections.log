@@ -1,0 +1,3 @@
+[2025-10-01 17:35:06] event=client_connected peer=Rabi ip=10.10.0.3
+[2025-10-01 17:38:22] event=client_connected peer=Rabi ip=10.10.0.4
+[2025-10-01 17:39:22] event=client_disconnected peer=Rabi ip=N/A
